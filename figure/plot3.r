@@ -1,0 +1,11 @@
+cat("Reading file, please wait...\n")
+hpc <- read.table("household_power_consumption.txt", stringsAsFactors = FALSE, header=TRUE, sep=';')
+hpc2 <- subset(hpc, Date=="1/2/2007" | Date=="2/2/2007")
+dt <- strptime(paste(hpc2$Date, hpc2$Time), "%d/%m/%Y %H:%M:%S")
+
+png(file="plot3.png")
+with(hpc2, plot(dt, as.numeric(Sub_metering_1), type="l", xlab="", ylab="Energy sub metering"))
+with(hpc2, points(dt, as.numeric(Sub_metering_2), type="l", col="Red"))
+with(hpc2, points(dt, as.numeric(Sub_metering_3), type="l", col="Blue"))
+legend("topright", col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1)
+dev.off()
