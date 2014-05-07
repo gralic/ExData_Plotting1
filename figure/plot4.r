@@ -5,7 +5,7 @@ dt <- strptime(paste(hpc2$Date, hpc2$Time), "%d/%m/%Y %H:%M:%S")
 
 png(file="plot4.png")
 par(mfcol = c(2, 2))
-plot(dt, as.numeric(hpc2$Global_active_power), type="l", xlab="", ylab="Global Active Power (kilowatts)")
+plot(dt, as.numeric(hpc2$Global_active_power), type="l", xlab="", ylab="Global Active Power")
 with(hpc2, plot(dt, as.numeric(Sub_metering_1), type="l", xlab="", ylab="Energy sub metering"))
 with(hpc2, points(dt, as.numeric(Sub_metering_2), type="l", col="Red"))
 with(hpc2, points(dt, as.numeric(Sub_metering_3), type="l", col="Blue"))
